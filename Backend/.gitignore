@@ -1,0 +1,70 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+backend/**/__pycache__
+# Ignore the virtual environment folder
+venv/
+.env
+.venv
+/.venv/
+
+# Ignore the database
+db.sqlite3
+
+# Ignore media and static files
+media/
+static/
+
+# Ignore local settings
+local_settings.py
+
+# Ignore secret keys
+*.secret
+
+# Ignore logs
+log/
+*.log
+
+# Ignore backup files
+*.bak
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+
+# Ignore generated files
+*.pyc
+
+# Ignore local development files
+local/
+
+# Ignore environment-specific files
+*.env
+
+# Ignore database configuration files
+*.db
+
+# Ignore system files
+.DS_Store
+
+# Ignore IDE settings
+.vscode/
+
+# Ignore migration files (if using South or Django 1.6+)
+*/migrations/
+
+# Ignore database settings (if using PostgreSQL or MySQL)
+*.sqlite3
+
+# Ignore Docker files (if using Docker for local development)
+docker-compose.yml
+Dockerfile
+.docker/
+
+# Ignore Celery configuration
+celeryconfig.pyc
+
+# Ignore ElasticSearch data
+/data/
+backend/api/similarity_checker/glove/
+*.pkl
