@@ -3,7 +3,7 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
-from .similarity_checker.load_glove_vectors import check_similarity
+from .similarity_checker.get_similarity_rank import get_similarity_rank
 #from .utils.word_generator import get_random_word_from_glove
 from .models import *
 from .serializers import *
@@ -34,16 +34,17 @@ class GuessWordView(APIView):
         game = Game.objects.get(id=game_id)
         secret_word = game.secret_word.lower()
 
-        similarity = check_similarity(secret_word,user_word)
+        """ similarity = get_similarity_rank_annoy(secret_word,user_word) """
+        rank = get_similarity_rank(secret_word,user_word)
         
-        if similarity is not None:
+        if rank is not None and rank >= 0 :
             guessed_word = GuessedWord.objects.create(
                 game=game,
                 user_word=user_word,
-                similarity_score=similarity
+                similarity_score=rank
             )
             return Response({
-                'similarity_score': similarity,
+                'similarity_score': rank,
                 'guessed_word': guessed_word.user_word
             }, status=status.HTTP_200_OK)
         else:
